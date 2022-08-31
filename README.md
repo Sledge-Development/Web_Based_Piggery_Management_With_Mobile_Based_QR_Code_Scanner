@@ -14,4 +14,5 @@ Under this Readme file you will find the information needed to run this software
 # Default Credentials
 For username and password of login use:
 > Username: admin
+
 > Password:admin
