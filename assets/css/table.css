@@ -1,0 +1,22 @@
+tr:nth-child(odd) {
+  background-color: blueviolet;
+}
+tr:nth-child(even) {
+  background-color: gray;
+  color: white;
+}
+th {
+  background-color: violet;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.rotate-left {
+  transform: rotate(-80deg);
+}
