@@ -1,87 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/tailwind.css">
-    <link rel="stylesheet" href="assets/notyf/notyf.min.css">
+    <link defer rel="stylesheet" href="assets/notyf/notyf.min.css">
+    <link rel="stylesheet" href="assets/css/custom.css">
+    <script src="assets/jquery.js"></script>
     <title>Dashboard</title>
 </head>
+
 <body>
     <div class="w-screen h-screen bg-gray-800 flex flex-col overflow-hidden">
-      <div class="w-full h-1/12 grid header-em">
-        <h1 class="mr-4 ml-auto mt-auto mb-auto text-white">RVM HOG FARM</h1>
-      </div>
+        <div class="w-full h-1/12 grid header-em">
+            <h1 class="mr-4 ml-auto mt-auto mb-auto text-white">RVM HOG FARM</h1>
+        </div>
         <div class="h-11/12 w-full flex flex-row bg-gray-400">
             <div class="h-full flex flex-col text-white  w-1/6 bg-gray-500">
-                <div class="w-full h-12  grid text-center text-sm ">
-                    <h1 class="my-auto">Welcome,Juan Dela Cruz</h1>
+                <div class="w-full h-12  flex flex-row text-center text-sm ">
+                    <img class="h-12 ml-2 w-12 " src="assets/icons/user_icon.png">
+                    <h1 class="my-auto ml-4">Welcome,Juan Dela Cruz</h1>
                 </div>
                 <div class="w-full ">
                     <h1>Menu</h1>
                 </div>
-                <div class="w-full grid cursor-pointer text-white hover:bg-gray-600 text-center h-12 bg-gray-500 ">
-                    <h1 class="mt-auto mb-auto mr-auto ml-auto">Dashboard</h1>
+                <div id="dashboard"
+                    class="w-full flex flex-row cursor-pointer text-white hover:bg-gray-600 text-center h-12 bg-gray-500 ">
+                    <img class="w-8 h-8 my-auto ml-2 mr-4" src="assets/icons/dashboard_users.png" alt="">
+                    <h1 class="mt-auto mb-auto text-sm mr-auto ml-0">Dashboard</h1>
                 </div>
-                <div class="w-full grid cursor-pointer text-white hover:bg-gray-600 text-center h-12 bg-gray-500 ">
-                    <h1 class="mt-auto mb-auto mr-auto ml-auto">Record Management</h1>
+                <div id="record_management"
+                    class="w-full flex flex-row cursor-pointer text-white hover:bg-gray-600 text-center h-12 bg-gray-500 ">
+                    <img class="w-8 h-8 my-auto ml-2 mr-4" src="assets/icons/record.png" alt="">
+                    <h1 class="mt-auto mb-auto text-sm mr-auto ml-0">Record Management</h1>
                 </div>
-                <div class="w-full grid cursor-pointer text-white hover:bg-gray-600 text-center h-12 bg-gray-500 ">
-                    <h1 class="mt-auto mb-auto mr-auto ml-auto">Scheduling Management</h1>
+                <div id="scheduling_management"
+                    class="w-full flex flex-row cursor-pointer text-white hover:bg-gray-600 text-center h-12 bg-gray-500 ">
+                    <img class="w-8 h-8 my-auto ml-2 mr-4" src="assets/icons/schedule.png" alt="">
+                    <h1 class="mt-auto mb-auto text-sm mr-auto ml-0">Scheduling Management</h1>
                 </div>
-                <div class="w-full grid cursor-pointer text-white hover:bg-gray-600 text-center h-12 bg-gray-500 ">
-                    <h1 class="mt-auto mb-auto mr-auto ml-auto">Pig Management</h1>
+                <div id="pig_management"
+                    class="w-full flex flex-row cursor-pointer text-white hover:bg-gray-600 text-center h-12 bg-gray-500 ">
+                    <img class="w-8 h-8 my-auto ml-2 mr-4" src="assets/icons/pig_management.png" alt="">
+                    <h1 class="mt-auto mb-auto text-sm mr-auto ml-0">Pig Management</h1>
                 </div>
-                <div class="w-full grid cursor-pointer text-white hover:bg-gray-600 text-center h-12 bg-gray-500 ">
-                    <h1 class="mt-auto mb-auto mr-auto ml-auto">Inventory Management</h1>
+                <div id="inventory_management"
+                    class="w-full flex flex-row cursor-pointer text-white hover:bg-gray-600 text-center h-12 bg-gray-500 ">
+                    <img class="w-8 h-8 my-auto ml-2 mr-4" src="assets/icons/inventory_management.png" alt="">
+                    <h1 class="mt-auto mb-auto text-sm mr-auto ml-0">Inventory Management</h1>
                 </div>
-                <div class="w-full grid cursor-pointer text-white hover:bg-gray-600 text-center h-12 bg-gray-500 ">
-                    <h1 class="mt-auto mb-auto mr-auto ml-auto">User Management</h1>
+                <div id="user_management"
+                    class="w-full flex flex-row cursor-pointer text-white hover:bg-gray-600 text-center h-12 bg-gray-500 ">
+                    <img class="w-8 h-8 my-auto ml-2 mr-4" src="assets/icons/user_management.png" alt="">
+                    <h1 class="mt-auto mb-auto text-sm mr-auto ml-0">User Management</h1>
                 </div>
-                <div class="w-full grid cursor-pointer text-white hover:bg-gray-600 text-center h-12 bg-gray-500 ">
-                    <h1 class="mt-auto mb-auto mr-auto ml-auto">Reports</h1>
+                <div id="reports"
+                    class="w-full flex flex-row cursor-pointer text-white hover:bg-gray-600 text-center h-12 bg-gray-500 ">
+                    <img class="w-8 h-8 my-auto ml-2 mr-4" src="assets/icons/reports.png" alt="">
+                    <h1 class="mt-auto mb-auto text-sm mr-auto ml-0">Reports</h1>
                 </div>
-                <div class="w-full grid cursor-pointer text-white hover:bg-gray-600 text-center h-12 bg-gray-500 ">
-                    <h1 class="mt-auto mb-auto mr-auto ml-auto">Back-up & Restore</h1>
+                <div id="backup_and_restore"
+                    class="w-full flex flex-row cursor-pointer text-white hover:bg-gray-600 text-center h-12 bg-gray-500 ">
+                    <img class="w-8 h-8 my-auto ml-2 mr-4" src="assets/icons/backup_restore.png" alt="">
+                    <h1 class="mt-auto mb-auto text-sm mr-auto ml-0">Back-up & Restore</h1>
                 </div>
-                <div class="w-full grid cursor-pointer text-white hover:bg-gray-600 text-center h-12 bg-gray-500 ">
-                    <h1 class="mt-auto mb-auto mr-auto ml-auto">Logout</h1>
+                <div id="logout"
+                    class="w-full flex flex-row cursor-pointer text-white hover:bg-gray-600 text-center h-12 bg-gray-500 ">
+                    <img class="w-8 h-8 my-auto ml-2 mr-4" src="assets/icons/logout.png" alt="">
+                    <h1 class="mt-auto mb-auto text-sm mr-auto ml-0">Logout</h1>
                 </div>
             </div>
             <div class="h-full w-5/6 flex flex-col bg-gray-600">
                 <div class="w-full flex flex-row">
-                    <img class="w-12 h-12 mr-8 ml-2" src="" alt="icon_user">
-                    <h1>Dashboard</h1>
+                    <img class="w-12 h-12 mr-4 ml-8" src="assets/icons/dashboard_users.png" alt="icon_user">
+                    <h1 class="mt-auto text-white mb-auto font-bold">Dashboard</h1>
                 </div>
                 <div class="w-5/6 mx-auto gap-x-2 gap-y-4 grid rounded-md  mt-2 grid-cols-4">
                     <div class="shadow-2xl  rounded-md grid grid-rows-2 bg-white w-full h-36 flex-row">
-                        <h1 class="text-center my-auto">Total Pig</h1>
-                        <h1 class="text-center my-auto">0</h1>
+                        <h1 class="text-center my-auto">Total no. Pig</h1>
+                        <h1 class="text-center my-auto">10</h1>
                     </div>
                     <div class="shadow-2xl  rounded-md grid grid-rows-2 bg-white w-full h-36 flex-row">
-                        <h1 class="text-center my-auto">Total Pig</h1>
-                        <h1 class="text-center my-auto">0</h1>
+                        <h1 class="text-center my-auto">Total no. Sow</h1>
+                        <h1 class="text-center my-auto">5</h1>
                     </div>
                     <div class="shadow-2xl  rounded-md grid grid-rows-2 bg-white w-full h-36 flex-row">
-                        <h1 class="text-center my-auto">Total Pig</h1>
-                        <h1 class="text-center my-auto">0</h1>
+                        <h1 class="text-center my-auto">Total Medicines</h1>
+                        <h1 class="text-center my-auto">15</h1>
                     </div>
                     <div class="shadow-2xl  rounded-md grid grid-rows-2 bg-white w-full h-36 flex-row">
-                        <h1 class="text-center my-auto">Total Pig</h1>
-                        <h1 class="text-center my-auto">0</h1>
+                        <h1 class="text-center my-auto">Total Supply</h1>
+                        <h1 class="text-center my-auto">25</h1>
                     </div>
                     <div class="shadow-2xl  rounded-md grid grid-rows-2 bg-white w-full h-36 flex-row">
-                        <h1 class="text-center my-auto">Total Pig</h1>
-                        <h1 class="text-center my-auto">0</h1>
+                        <h1 class="text-center my-auto">Total No. Boar</h1>
+                        <h1 class="text-center my-auto">5</h1>
                     </div>
                     <div class="shadow-2xl  rounded-md grid grid-rows-2 bg-white w-full h-36 flex-row">
-                        <h1 class="text-center my-auto">Total Pig</h1>
-                        <h1 class="text-center my-auto">0</h1>
+                        <h1 class="text-center my-auto">Total Feeds</h1>
+                        <h1 class="text-center my-auto">8</h1>
                     </div>
                     <div class="shadow-2xl  rounded-md grid grid-rows-2 bg-white w-full h-36 flex-row">
-                        <h1 class="text-center my-auto">Total Pig</h1>
-                        <h1 class="text-center my-auto">0</h1>
+                        <h1 class="text-center my-auto">Total Vitamins</h1>
+                        <h1 class="text-center my-auto">20</h1>
                     </div>
 
                 </div>
@@ -89,7 +112,7 @@
         </div>
     </div>
 </body>
-<script type="module" src="assets/notyf/notyf.js">
-</script>
+<script type="module" src="assets/js/notif_handler.js"></script>
+<script src="assets/js/navigation.js"></script>
 
 </html>
