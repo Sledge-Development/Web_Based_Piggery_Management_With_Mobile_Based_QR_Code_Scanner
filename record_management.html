@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/tailwind.css">
-    <link defer rel="stylesheet" href="assets/notyf/notyf.min.css">
     <link rel="stylesheet" href="assets/css/table.css">
     <link rel="stylesheet" href="assets/css/custom.css">
     <script src="assets/jquery.js"></script>
@@ -48,48 +47,104 @@
             </div>
         </div>
     </div>
-    <div id="view_record_details"
-        class="w-screen  h-screen rounded-md shadow-2xl flex bg-black/50 overflow-hidden absolute">
-        <div class="w-full h-full flex flex-col  my-auto mx-auto">
-            <form action="" method="post" class="w-1/4 h-3/4 flex flex-col bg-white my-auto mx-auto">
-                <div class="w-full h-1/12 grid border-black border-b-2">
-                    <h1 class="text-center text-2xl my-auto">Operation Details</h1>
+    <div id="add_record_details" class="w-screen hidden  h-screen  flex bg-black/50 overflow-hidden absolute">
+        <div class="w-1/4 bg-white shadow-2xl rounded-md h-3/4 flex flex-col   my-auto mx-auto">
+            <div class="w-full h-1/12 grid border-black border-b-2">
+                <h1 class="text-center text-2xl my-auto">Operation Details</h1>
+            </div>
+            <div class="w-full grid overflow-y-auto grid-cols-1 h-11/12 ">
+                <div class="w-full h-12 flex flex-col">
+                    <span class="text-2xl mt-2 text-center my-auto ml-2 mr-4">Pig Id:</span>
+                    <input type="text"
+                        class="text-xl w-3/4 shadow-2xl focus:outline-none text-center border-b-2 mx-auto border-b-black my-auto">
                 </div>
-                <div class="w-full grid overflow-y-auto grid-cols-1 h-11/12 ">
-                    <div class="w-full h-12 flex flex-col">
-                        <span class="text-2xl mt-2 text-center my-auto ml-2 mr-4">Pig Id:</span>
-                        <input type="text"
-                            class="text-xl w-3/4 shadow-2xl focus:outline-none text-center border-b-2 mx-auto border-b-black my-auto">
-                    </div>
-                    <div class="w-full h-12 flex flex-col">
-                        <span class="text-2xl mt-2 text-center my-auto ml-2 mr-4">Operation:</span>
-                        <input type="text"
-                            class="text-xl w-3/4 shadow-2xl focus:outline-none text-center border-b-2 mx-auto border-b-black  my-auto">
-                    </div>
-                    <div class="w-full h-12 flex flex-col">
-                        <span class="text-2xl mt-2 text-center my-auto ml-2 mr-4">Item Name:</span>
-                        <input type="text"
-                            class="text-xl w-3/4 shadow-2xl focus:outline-none text-center border-b-2 mx-auto border-b-black  my-auto">
-                    </div>
-                    <div class="w-full h-12 flex flex-col">
-                        <span class="text-2xl mt-2 text-center my-auto ml-2 mr-4">Creator:</span>
-                        <input type="text"
-                            class="text-xl w-3/4 shadow-2xl focus:outline-none text-center border-b-2 mx-auto border-b-black  my-auto">
-                    </div>
-                    <div class="w-full h-12 flex flex-col">
-                        <span class="text-2xl mt-2 text-center my-auto ml-2 mr-4">Date:</span>
-                        <button id="operationdate">start</button>
-                       <input id="operation_date" type="date"
-                            class="text-xl w-3/4 shadow-2xl focus:outline-none text-center border-b-2 mx-auto border-b-black  my-auto">
-
-                    </div>
-                    <div class="w-full h-12 flex flex-row">
-                        <button class="w-1/4 h-full rounded-md bg-blue-500 hover:bg-red-400 mx-auto my-auto"
-                            id="close_record_detail">Close</button>
-                    </div>
-            </form>
+                <div class="w-full h-12 flex flex-col">
+                    <span class="text-2xl mt-2 text-center my-auto ml-2 mr-4">Operation:</span>
+                    <input type="text"
+                        class="text-xl w-3/4 shadow-2xl focus:outline-none text-center border-b-2 mx-auto border-b-black  my-auto">
+                </div>
+                <div class="w-full h-12 flex flex-col">
+                    <span class="text-2xl mt-2 text-center my-auto ml-2 mr-4">Item Name:</span>
+                    <input type="text"
+                        class="text-xl w-3/4 shadow-2xl focus:outline-none text-center border-b-2 mx-auto border-b-black  my-auto">
+                </div>
+                <div class="w-full h-12 flex flex-col">
+                    <span class="text-2xl mt-2 text-center my-auto ml-2 mr-4">Creator:</span>
+                    <input type="text"
+                        class="text-xl w-3/4 shadow-2xl focus:outline-none text-center border-b-2 mx-auto border-b-black  my-auto">
+                </div>
+                <div class="w-full h-24 flex flex-col">
+                    <span class="text-2xl mt-2 text-center my-auto ml-2 mr-4">Date:</span>
+                    <input id="operation_date" type="date"
+                        class="text-xl w-3/4 shadow-2xl focus:outline-none text-center border-b-black border-b-2 mx-auto my-auto">
+                </div>
+                <div class="w-full h-12 flex flex-row">
+                    <button id="confirm_add_record_details"
+                        class="w-1/4 h-full rounded-md bg-blue-500 hover:bg-red-400 mx-auto my-auto"
+                        id="close_record_detail">Add </button> <button
+                        class="w-1/4 h-full rounded-md bg-blue-500 hover:bg-red-400 mx-auto my-auto"
+                        id="cancel_add_record_detail">Cancel </button>
+                </div>
+            </div>
         </div>
     </div>
+    <div id="edit_record_details" class="w-screen hidden  h-screen  flex bg-black/50 overflow-hidden absolute">
+        <div class="w-1/4 bg-white shadow-2xl rounded-md h-3/4 flex flex-col   my-auto mx-auto">
+            <div class="w-full h-1/12 grid border-black border-b-2">
+                <h1 class="text-center text-2xl my-auto">Edit Operation Details</h1>
+            </div>
+            <div class="w-full grid overflow-y-auto grid-cols-1 h-11/12 ">
+                <div class="w-full h-12 flex flex-col">
+                    <span class="text-2xl mt-2 text-center my-auto ml-2 mr-4">Pig Id:</span>
+                    <input type="text"
+                        class="text-xl w-3/4 shadow-2xl focus:outline-none text-center border-b-2 mx-auto border-b-black my-auto">
+                </div>
+                <div class="w-full h-12 flex flex-col">
+                    <span class="text-2xl mt-2 text-center my-auto ml-2 mr-4">Operation:</span>
+                    <input type="text"
+                        class="text-xl w-3/4 shadow-2xl focus:outline-none text-center border-b-2 mx-auto border-b-black  my-auto">
+                </div>
+                <div class="w-full h-12 flex flex-col">
+                    <span class="text-2xl mt-2 text-center my-auto ml-2 mr-4">Item Name:</span>
+                    <input type="text"
+                        class="text-xl w-3/4 shadow-2xl focus:outline-none text-center border-b-2 mx-auto border-b-black  my-auto">
+                </div>
+                <div class="w-full h-12 flex flex-col">
+                    <span class="text-2xl mt-2 text-center my-auto ml-2 mr-4">Creator:</span>
+                    <input type="text"
+                        class="text-xl w-3/4 shadow-2xl focus:outline-none text-center border-b-2 mx-auto border-b-black  my-auto">
+                </div>
+                <div class="w-full h-24 flex flex-col">
+                    <span class="text-2xl mt-2 text-center my-auto ml-2 mr-4">Date:</span>
+                    <input id="operation_date" type="date"
+                        class="text-xl w-3/4 shadow-2xl focus:outline-none text-center border-b-black border-b-2 mx-auto my-auto">
+                </div>
+                <div class="w-full h-12 flex flex-row">
+                    <button class="w-1/4 h-full rounded-md bg-blue-500 hover:bg-red-400 mx-auto my-auto"
+                        id="close_record_detail">Edit </button> <button
+                        class="w-1/4 h-full rounded-md bg-blue-500 hover:bg-red-400 mx-auto my-auto"
+                        id="cancel_edit_record_detail">Cancel </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="remove_record_details" class="w-screen hidden  h-screen  flex bg-black/50 overflow-hidden absolute">
+        <div class="w-1/4 bg-white shadow-2xl rounded-md h-1/4 flex flex-col   my-auto mx-auto">
+            <div class="w-full h-2/6 grid border-black border-b-2">
+                <h1 class="text-center w-full text-2xl my-auto">Delete Operation Details</h1>
+            </div>
+            <div class="w-full grid overflow-y-auto grid-cols-1 h-11/12 ">
+                <div class="w-full text-center">
+                    <span>Are you sure you want to remove operation {135790}?</span>
+                </div>
+                <div class="w-full h-12 flex flex-row">
+                    <button class="w-1/4 h-full rounded-md bg-blue-500 hover:bg-red-400 mx-auto my-auto"
+                        id="close_record_detail">Remove </button> <button
+                        class="w-1/4 h-full rounded-md bg-blue-500 hover:bg-red-400 mx-auto my-auto"
+                        id="cancel_remove_record_detail">Cancel </button>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="w-screen h-screen bg-gray-800 flex flex-col overflow-hidden">
         <div class="w-full h-1/12 grid header-em">
@@ -172,7 +227,11 @@
                             <td>Deworm</td>
                             <td>April Jude Provido</td>
                             <td>07/04/2022</td>
-                            <td class="text-center">Edit | Delete</td>
+                            <td class="text-center grid grid-cols-3"><span id="edit_01"
+                                    class="w-full mx-auto my-auto hover:text-blue-500"
+                                    onclick="edit_operation_details('edit_01')">Edit</span> | <span
+                                    class="w-full mx-auto my-auto hover:text-blue-500" id="delete_01"
+                                    onclick="remove_operation_details('delete_01')">Delete</span></td>
                         </tr>
                     </table>
                 </div>
@@ -180,8 +239,9 @@
         </div>
     </div>
 </body>
-<script src="assets/notyf/notyf.js"></script>
-<script type="module" src="assets/js/notif_handler.js"></script>
+<script src="assets/notyf/notyf.min.js"></script>
+<link rel="stylesheet" href="assets/notyf/notyf.min.css">
+<script src="assets/js/notif_handler.js"></script>
 <script src="assets/js/navigation.js"></script>
 <script src="assets/js/ui_events.js"></script>
 
