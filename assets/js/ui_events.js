@@ -32,5 +32,12 @@ $("#cancel_remove_record_detail").on("click", () => {
 $("#confirm_add_record_details").on("click", (event) => {
     success("New operation details has been stored.")
     $("#add_record_details").addClass("hidden")
-
+})
+$("#confirm_edit_record_detail").on("click", () => {
+    success("Record was modified successfully.")
+    $("#edit_record_details").addClass("hidden")
+})
+$("#confirm_remove_record_detail").on("click", () => {
+    success("Record was succesfully removed.")
+    $("#remove_record_details").addClass("hidden")
 })
