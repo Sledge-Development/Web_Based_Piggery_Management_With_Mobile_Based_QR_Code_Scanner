@@ -8,7 +8,9 @@ $("#dashboard").on("click", () => {
 $("#record_management").on("click", () => {
     open("/record_management.html", "_self")
 })
-
+$("#inventory_management").on("click", () => {
+    open("/inventory_management.html", "_self")
+})
 $("#scheduling_management").on("click", () => {
     open("/scheduling_management.html", "_self")
 })
@@ -25,5 +27,5 @@ $("#backup_and_restore").on("click", () => {
     open("/backup_and_restore.html", "_self")
 })
 $("#logout").on("click", () => {
-    open("/logout.html", "_self")
+    open("/index.html", "_self")
 })
