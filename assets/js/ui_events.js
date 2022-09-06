@@ -41,3 +41,7 @@ $("#confirm_remove_record_detail").on("click", () => {
     success("Record was succesfully removed.")
     $("#remove_record_details").addClass("hidden")
 })
+$("#record_management_search").on("click",(event)=>{
+    event.preventDefault()
+    
+})
