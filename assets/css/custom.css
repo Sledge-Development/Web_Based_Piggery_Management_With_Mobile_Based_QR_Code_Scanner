@@ -8,3 +8,17 @@
   .header-em{
   background-color:#1f6b37;
   }
+
+  .no-scroll::-webkit-scrollbar {
+    display: none; /* for Chrome, Safari, and Opera */
+  }
+  /* hide scrollbar but allow scrolling */
+.no-scroll {
+  -ms-overflow-style: none; /* for Internet Explorer, Edge */
+  scrollbar-width: none; /* for Firefox */
+  overflow-y: scroll; 
+}
+
+.no-scroll::-webkit-scrollbar {
+  display: none; /* for Chrome, Safari, and Opera */
+}

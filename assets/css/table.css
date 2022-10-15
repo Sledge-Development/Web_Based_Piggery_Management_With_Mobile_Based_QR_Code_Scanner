@@ -1,12 +1,18 @@
 tr:nth-child(odd) {
-  background-color: blueviolet;
-}
-tr:nth-child(even) {
-  background-color: gray;
+  background-color: transparent;
+  border-color: gray;
+  border-width: 1px;
   color: white;
 }
-th {
-  background-color: violet;
+tr:nth-child(even) {
+  background-color: transparent;
+  border-color: gray;
+  border-width: 1px;
+  color: white;
+}
+thead {
+  background-image: linear-gradient(to right, #1c1e21, #231c4d);
+  color: black;
 }
 
 .no-scrollbar::-webkit-scrollbar {
@@ -19,4 +25,10 @@ th {
 }
 .rotate-left {
   transform: rotate(-80deg);
+}
+table {
+  text-align: center;
+}
+.placeholder-l-4::placeholder{
+ padding-left: 10px;
 }
