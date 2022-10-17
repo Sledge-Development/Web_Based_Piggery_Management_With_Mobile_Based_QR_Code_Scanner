@@ -12,6 +12,10 @@ if ($result->num_rows <= 0) {
     echo '<tr class="boar-data hover:bg-blue-500 w-full text-black cursor-pointer "><td class="text-black">No pig id found with keyword :' . explode("%", $search)[1] . '</td></tr>';
 } else {
     while ($row = $result->fetch_assoc()) {
-        echo '<tr onclick="load_boar(\'' . $row["pig_id"] . '\',\'' . $action . '\');" data="' . $row["pig_id"] . '" class="boar-data hover:bg-blue-500 w-full text-black cursor-pointer "><td class="text-black"> ' . $row["pig_id"] . '</td></tr>';
+        if ($action == "edit") {
+            echo '<tr onclick="edit_load_boar(\'' . $row["pig_id"] . '\',\'' . $action . '\');" data="' . $row["pig_id"] . '" class="boar-data hover:bg-blue-500 w-full text-black cursor-pointer "><td class="text-black"> ' . $row["pig_id"] . '</td></tr>';
+        }else{
+            echo '<tr onclick="load_boar(\'' . $row["pig_id"] . '\',\'' . $action . '\');" data="' . $row["pig_id"] . '" class="boar-data hover:bg-blue-500 w-full text-black cursor-pointer "><td class="text-black"> ' . $row["pig_id"] . '</td></tr>'; 
+        }
     }
 }

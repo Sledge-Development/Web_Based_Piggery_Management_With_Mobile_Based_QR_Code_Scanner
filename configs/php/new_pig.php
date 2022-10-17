@@ -12,8 +12,6 @@ $birthday = date_create($connect->real_escape_string($_POST["birthdate"]));
 $bday = date_format($birthday, "Y-m-d");
 $batch = $connect->real_escape_string($_POST["batch"]);
 $cage = $connect->real_escape_string($_POST["cage"]);
-$sow = $connect->real_escape_string($_POST["sow"]);
-$boar = $connect->real_escape_string($_POST["boar"]);
 $gender=$connect->real_escape_string($_POST["gender"]);
 try {
     $sql = "INSERT INTO `piggerymanagement`.`tbl_pigs` (`pig_id`, `pig_tag`, `weight`, `breed`, `birthdate`, `batch_id`, `cage_id`,`gender`) VALUES (?,?,?,?,?,?,?,?);";

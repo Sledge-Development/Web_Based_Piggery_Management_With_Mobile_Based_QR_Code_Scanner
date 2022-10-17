@@ -69,6 +69,10 @@ $renderer = MenuRender($full_name);
                     <table id="add_boar_list" class="w-full hidden  h-14 border-2 border-gray-500 overflow-y-auto overflow-x-hidden no-scroll">
                     </table>
                 </div>
+                <div class="w-3/4 mx-auto mt-2 mb-2 h-auto flex flex-col">
+                    <span class="text-xl font-mono my-auto">Batch No. of Pig:</span>
+                    <input type="number" name="batch_max" id="add_batch_max" class="shadow appearance-none border rounded w-full ml-auto mr-auto h-12 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                </div>
                 <div class="w-full mb-2 h-16 flex flex-row">
                     <input type="submit" class="w-1/4 h-12 rounded-md bg-blue-500 hover:bg-red-400 mx-auto my-auto" value="Add">
                     <button class="w-1/4 h-12 rounded-md bg-blue-500 hover:bg-red-400 mx-auto my-auto" id="cancel_add_batch">Cancel </button>
@@ -121,6 +125,7 @@ $renderer = MenuRender($full_name);
                             <th>Batch ID</th>
                             <th>Boar ID</th>
                             <th>Sow ID</th>
+                            <th>Max Pig No.</th>
                             <th>Action</th>
                         </thead>
                         <?php
@@ -135,6 +140,7 @@ $renderer = MenuRender($full_name);
                                     ' <td>' . $row["batch_id"] . '</td>' .
                                     '<td>' . $row["boar_id"] . '</td>' .
                                     '<td>' . $row["sow_id"] . '</td>' .
+                                    '<td>' . $row["batch_max"] . '</td>' .
                                     '<td class="text-center grid grid-cols-3">' .
                                     '<span id="edit_01" class="w-full mx-auto my-auto hover:text-blue-500" onclick="edit_pig_details(\'' . $row["batch_id"] . '\',\'' . $row["boar_id"] . '\',\'' . $row["sow_id"] . '\')">Edit</span>' .
                                     '</td>' .

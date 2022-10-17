@@ -20,9 +20,7 @@ $("#new_pig_details").on("click", () => {
         getCage().then((data) => {
             $("#add_cage").append(data)
             getBatch().then((data) => {
-                var parsed = JSON.parse(data)
-                currentBatch = parsed.batch_id;
-                $("#add_pig_batch").val(parsed.batch_id)
+                $("#add_pig_batch").append(data)
                 $("#add_sow").val(parsed.sow_id)
                 $("#add_boar").val(parsed.boar_id)
             })
@@ -346,9 +344,6 @@ function load_boar(id, action) {
 $("#edit_pig_form").on("submit", (event) => {
     event.preventDefault()
     $("#edit_pig_id").removeAttr("disabled")
-    $("#edit_pig_batch").removeAttr("disabled")
-    $("#edit_sow").removeAttr("disabled")
-    $("#edit_boar").removeAttr("disabled")
     var data = $("#edit_pig_form").serializeArray()
     $.ajax({
         type: "post",
@@ -362,9 +357,6 @@ $("#edit_pig_form").on("submit", (event) => {
                 $("#edit_pig_details").trigger("reset")
                 $("#edit_pig_details").addClass("hidden")
                 $("#edit_pig_id").attr("disabled", "disabled")
-                $("#edit_pig_batch").attr("disabled", "disabled")
-                $("#edit_sow").attr("disabled", "disabled")
-                $("#edit_boar").attr("disabled", "disabled")
                 $("#edit_pig_details").addClass("hidden")
             } else if (parsed.code == 500) {
                 error(parsed.message)
@@ -383,11 +375,7 @@ function edit_pig_details(pig_id) {
         getCage().then((data) => {
             $("#edit_cage").append(data)
             getBatch().then((data) => {
-                var parsed = JSON.parse(data)
-                currentBatch = parsed.batch_id;
-                $("#edit_pig_batch").val(parsed.batch_id)
-                $("#edit_sow").val(parsed.sow_id)
-                $("#edit_boar").val(parsed.boar_id)
+                $("#edit_pig_batch").append(data)
                 $.ajax({
                     type: "post",
                     url: "configs/php/edit_pig.php",
@@ -409,6 +397,7 @@ function edit_pig_details(pig_id) {
                         $("#edit_sow").attr("disabled", "disabled")
                         $("#edit_boar").attr("disabled", "disabled")
                         $("#edit_gender").val(parsed.message.gender)
+                        $("#edit_pig_batch").val(parsed.message.batch_id)
                     }
                 });
             })
@@ -430,40 +419,18 @@ $("#add_pig_form").on("submit", (event) => {
         validityCost("birthdate", "Birthdate should not be empty.")
     }
     else {
-        $("#add_boar").attr("disabled", "disabled")
-        $("#add_sow").attr("disabled", "disabled")
-        if (currentBatch == $("#add_pig_batch").val()) {
-            new_pig().then((data) => {
-                console.log(data)
-                var parsed = JSON.parse(data);
-                if (parsed.code == 200) {
-                    success(parsed.message)
-                    $("#add_pig_details").addClass("hidden")
-                    display_pig()
-                } else if (parsed.code == 500) {
-                    error(parsed.message)
-                }
-            })
-        } else {
-            new_batch().then((data) => {
-                var parsed = JSON.parse(data)
-                if (parsed.code == 200) {
-                    success(parsed.message)
-                    new_pig().then((data) => {
-                        var parsed = JSON.parse(data)
-                        if (parsed.code == 200) {
-                            success(parsed.message)
-                            $("#add_pig").addClass("hidden")
-                            display_pig()
-                        } else if (parsed.code == 500) {
-                            error(parsed.message)
-                        }
-                    })
-                } else if (parsed.code == 500) {
-                    error(parsed.message)
-                }
-            })
-        }
+        new_pig().then((data) => {
+            console.log(data)
+            var parsed = JSON.parse(data);
+            if (parsed.code == 200) {
+                success(parsed.message)
+                $("#add_pig_details").addClass("hidden")
+                display_pig()
+                $(".data-batch").remove();
+            } else if (parsed.code == 500) {
+                error(parsed.message)
+            }
+        })
 
     }
 })

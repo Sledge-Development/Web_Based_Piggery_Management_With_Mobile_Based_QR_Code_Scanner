@@ -111,7 +111,8 @@ $("#add_boar").on("input", (event) => {
             type: "post",
             url: "configs/php/load_boar.php",
             data: {
-                "keyword": data
+                "keyword": data,
+                "action": "add"
             },
             success: function (response) {
                 $("#add_boar_list").append(response)
@@ -143,7 +144,8 @@ $("#edit_boar").on("input", (event) => {
             type: "post",
             url: "configs/php/load_boar.php",
             data: {
-                "keyword": data
+                "keyword": data,
+                "action": "edit"
             },
             success: function (response) {
                 $("#edit_boar_list").append(response)
@@ -155,7 +157,7 @@ $("#edit_boar").on("input", (event) => {
 $("#edit_boar").on("focus", (event) => {
     boar_still_search = true;
 })
-function load_boar(id) {
+function edit_load_boar(id) {
     $("#edit_boar").val(id)
     boar_still_search = false;
     $("#edit_boar_list").addClass("hidden")
@@ -185,7 +187,7 @@ $("#edit_sow").on("input", (event) => {
 $("#edit_sow").on("focus", (event) => {
     sow_still_search = true;
 })
-function load_sow(id) {
+function edit_load_sow(id) {
     $("#edit_sow").val(id)
     sow_still_search = false;
     $("#edit_sow_list").addClass("hidden")
@@ -204,13 +206,14 @@ $("#new_batch_form").on("submit", (event) => {
             data: {
                 "boar": $("#add_boar").val(),
                 "sow": $("#add_sow").val(),
+                "batch_max": $("#add_batch_max").val()
             },
             success: function (response) {
                 var parsed = JSON.parse(response)
                 if (parsed.code == 200) {
                     success(parsed.message);
                     display_batch()
-                    $("#add_batch").addClass("hidden")
+                    $("#add_new_batch").addClass("hidden")
                 } else if (parse.code == 500) {
                     error(parsed.message)
                 }
@@ -259,10 +262,10 @@ function display_batch() {
     $(".batch-data").remove();
     $.ajax({
         type: "post",
-        url: "config/php/display_batch.php",
+        url: "configs/php/display_batch.php",
         data: {},
         success: function (response) {
-            $("table-data").append(response)
+            $("#table-data").append(response)
         }
     });
 }

@@ -10,7 +10,7 @@ try {
     $item_net_weight = $connect->real_escape_string($_POST["add_item_netweight"]);
     $add_item_quantity = $connect->real_escape_string($_POST["add_item_quantity"]);
     $add_item_unit = $connect->real_escape_string($_POST["add_item_unit"]);
-    $sql = "INSERT INTO `piggerymanagement`.`tbl_inventory` (`item_tag`, `item_name`, `item_description`, `item_quantity`, `item_net_weight`, `item_unit`) VALUES (?,?,?,?,?,?);";
+    $sql = "INSERT INTO `piggerymanagement`.`tbl_inventory` (`item_id`, `item_name`, `item_description`, `item_quantity`, `item_net_weight`, `item_unit`) VALUES (?,?,?,?,?,?);";
     $stmt = $connect->prepare($sql);
     $stmt->bind_param("sssdds", $item_tag, $item_name, $item_description, $add_item_quantity, $item_net_weight, $add_item_unit);
 

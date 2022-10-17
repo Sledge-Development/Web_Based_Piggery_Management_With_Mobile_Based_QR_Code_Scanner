@@ -161,10 +161,11 @@ $renderer = MenuRender($full_name);
                     </select>
                 </div>
                 <div class="w-3/4 mx-auto mt-2 mb-2 h-auto flex flex-col">
-                    <span class="text-xl font-mono my-auto">Batch:</span>
+                    <span class="text-xl font-mono my-auto flex flex-row">Batch <abbr title="Batch is listed from newest to olderst"><img src="/assets/svg/alert.png" class="w-6 mx-2 h-6 border-b-2 border-b-black"></abbr>:</span>
                     <div class="w-full flex flex-row">
-                        <input name="batch" id="add_pig_batch" type="number" value="1" disabled class="shadow appearance-none border  rounded w-full mx-auto h-12 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-                        <img id="new_batch_btn" src="/assets/svg/add.png" class="w-12 h-12 ml-4" alt="">
+                        <select class="shadow appearance-none border  rounded w-full mx-auto h-12 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="batch" id="add_pig_batch">
+                            <option class="" value="default">Batch</option>
+                        </select>
                     </div>
                 </div>
                 <div class="w-3/4 mx-auto mt-2 mb-2 h-auto flex flex-col">
@@ -173,19 +174,6 @@ $renderer = MenuRender($full_name);
                         <option value="default">Cage</option>
                     </select>
                 </div>
-                <div class="w-3/4 mx-auto mt-2 mb-2 h-auto flex flex-col">
-                    <span class="text-xl font-mono my-auto">Sow:</span>
-                    <input name="sow" disabled id="add_sow" type="text" class="shadow appearance-none border  rounded w-full mx-auto h-12 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-                    <table id="add_sow_list" class="w-full hidden  h-14 border-2 border-gray-500 overflow-y-auto overflow-x-hidden no-scroll">
-                    </table>
-                </div>
-                <div class="w-3/4 mx-auto mt-2 mb-2 h-auto flex flex-col">
-                    <span class="text-xl font-mono my-auto">Boar:</span>
-                    <input name="boar" disabled id="add_boar" type="text" class="shadow appearance-none border  rounded w-full mx-auto h-12 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-                    <table id="add_boar_list" class="w-full hidden  h-14 border-2 border-gray-500 overflow-y-auto overflow-x-hidden no-scroll">
-                    </table>
-                </div>
-
                 <div class="w-full mt-2 mb-2 h-auto flex flex-col">
                     <span class="text-xl ml-12">Qr Tag:<span class="text-sm text-red-500"> before adding consider downloading this qr tag for pig.</span></span>
                     <div class="w-36 h-36 mt-2 mb-2 mx-auto " id="qrcode"></div>
@@ -238,9 +226,11 @@ $renderer = MenuRender($full_name);
                     </select>
                 </div>
                 <div class="w-3/4 mx-auto mt-2 mb-2 h-auto flex flex-col">
-                    <span class="text-xl font-mono my-auto">Batch:</span>
+                    <span class="text-xl font-mono my-auto flex flex-row">Batch <abbr title="Batch is listed from newest to olderst"><img src="/assets/svg/alert.png" class="w-6 mx-2 h-6 border-b-2 border-b-black"></abbr>:</span>
                     <div class="w-full flex flex-row">
-                        <input name="edit_batch" id="edit_pig_batch" type="number" value="1" disabled class="shadow appearance-none border  rounded w-full mx-auto h-12 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                        <select class="shadow appearance-none border  rounded w-full mx-auto h-12 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="edit_batch" id="edit_pig_batch">
+                            <option class="" value="default">Batch</option>
+                        </select>
                     </div>
                 </div>
                 <div class="w-3/4 mx-auto mt-2 mb-2 h-auto flex flex-col">
@@ -249,25 +239,13 @@ $renderer = MenuRender($full_name);
                         <option value="default">Cage</option>
                     </select>
                 </div>
-                <div class="w-3/4 mx-auto mt-2 mb-2 h-auto flex flex-col">
-                    <span class="text-xl font-mono my-auto">Sow:</span>
-                    <input name="sow" id="edit_sow" type="text" class="shadow appearance-none border  rounded w-full mx-auto h-12 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-                    <table id="edit_sow_list" class="w-full hidden  h-14 border-2 border-gray-500 overflow-y-auto overflow-x-hidden no-scroll">
-                    </table>
-                </div>
-                <div class="w-3/4 mx-auto mt-2 mb-2 h-auto flex flex-col">
-                    <span class="text-xl font-mono my-auto">Boar:</span>
-                    <input name="boar" id="edit_boar" type="text" class="shadow appearance-none border  rounded w-full mx-auto h-12 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-                    <table id="edit_boar_list" class="w-full hidden  h-14 border-2 border-gray-500 overflow-y-auto overflow-x-hidden no-scroll">
-                    </table>
-                </div>
                 <div class="w-full mt-2 mb-2 h-auto flex flex-col">
                     <span class="text-xl ml-12">Qr Tag:</span>
                     <div class="w-36 h-36 mt-2 mb-2 mx-auto " id="edit_qrcode"></div>
                     <button class="h-12 w-36 mx-auto bg-green-500" id="edit_download_qr">Download QR</button>
                 </div>
                 <div class="w-full mb-2 h-16 flex flex-row">
-                    <input type="submit" value="Edit" class="w-1/4 h-12 rounded-md bg-blue-500 hover:bg-red-400 mx-auto my-auto">
+                    <input type="submit" value="Update" class="w-1/4 h-12 rounded-md bg-blue-500 hover:bg-red-400 mx-auto my-auto">
                     <button class="w-1/4 h-12 rounded-md bg-blue-500 hover:bg-red-400 mx-auto my-auto" id="cancel_edit_pigs">Cancel </button>
                 </div>
             </div>

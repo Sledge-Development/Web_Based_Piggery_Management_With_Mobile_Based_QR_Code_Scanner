@@ -1,5 +1,5 @@
 <?php
- include 'configs/php/db.php';
+include 'configs/php/db.php';
 session_start();
 if (!isset($_SESSION["user_id"])) {
     header("Location:/index.php?error=401");
@@ -61,6 +61,10 @@ $renderer = MenuRender($full_name);
                     <span class="text-xl font-mono my-auto"> Cage Name</span>
                     <input id="cage_name" name="cage_name" type="text" class="shadow appearance-none border  rounded w-full mx-auto h-12 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
                 </div>
+                <div class="w-3/4 mx-auto mt-2 mb-2 h-auto flex flex-col">
+                    <span class="text-xl font-mono my-auto">Cage Max Pig:</span>
+                    <input type="number" name="cage_max" id="edit_cage_max" class="shadow appearance-none border rounded w-full ml-auto mr-auto h-12 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                </div>
                 <div class="w-full mb-2 h-16 flex flex-row">
                     <input type="submit" class="w-1/4 h-12 rounded-md bg-blue-500 hover:bg-red-400 mx-auto my-auto" value="Add" />
                     <button class="w-1/4 h-12 rounded-md bg-blue-500 hover:bg-red-400 mx-auto my-auto" id="cancel_add_batch">Cancel </button>
@@ -83,7 +87,7 @@ $renderer = MenuRender($full_name);
                     <input type="text" name="cage_name" id="edit_cage_name" class="shadow appearance-none border rounded w-full ml-auto mr-auto h-12 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
                 </div>
                 <div class="w-full mb-2 h-16 flex flex-row">
-                    <button class="w-1/4 h-12 rounded-md bg-blue-500 hover:bg-red-400 mx-auto my-auto" id="confirm_edit_pigs">Edit</button>
+                    <button class="w-1/4 h-12 rounded-md bg-blue-500 hover:bg-red-400 mx-auto my-auto" id="confirm_edit_pigs">Update</button>
                     <button class="w-1/4 h-12 rounded-md bg-blue-500 hover:bg-red-400 mx-auto my-auto" id="cancel_edit_pigs">Cancel </button>
                 </div>
             </div>
@@ -94,7 +98,7 @@ $renderer = MenuRender($full_name);
             <h1 class="mr-4 ml-auto mt-auto mb-auto text-white">RVM HOG FARM</h1>
         </div>
         <div class="h-11/12 w-full flex flex-row bg-gray-400">
-            <?php echo MenuRender($full_name);?>
+            <?php echo MenuRender($full_name); ?>
             <div class="h-full w-5/6 flex flex-col bg-gray-600">
                 <div class="w-full flex mt-2 flex-row">
                     <img class="w-12 h-12 mr-4 ml-8" src="assets/svg/cage.png" alt="icon_user">
@@ -109,6 +113,7 @@ $renderer = MenuRender($full_name);
                             <th>Cage Id</th>
                             <th>Cage Number</th>
                             <th>Total Pig</th>
+                            <th>Max Pig</th>
                             <th>Action</th>
                         </thead>
                         <?php
@@ -121,7 +126,8 @@ $renderer = MenuRender($full_name);
                                 echo '<tr class="cage-data cursor-pointer table_row_record_details">' .
                                     '<td>' . $row["cage_id"] . '</td>' .
                                     '<td>' . $row["cage_name"] . '</td>' .
-                                    '<td>' . getTotal($connect, $row["cage_id"]) . '</td>' .
+                                    '<td>' . getTotalCage($connect, $row["cage_id"]) . '</td>' .
+                                    '<td>' . $row["cage_max"] . '</td>' .
                                     '<td class="text-center flex flex-row">' .
                                     '<span id="edit_01" class="my-auto hover:text-blue-500" onclick="edit_pig_details(\'' . $row["cage_id"] . '\',\'' . $row["cage_name"] . '\')">Edit</span>' .
                                     '</tr>';

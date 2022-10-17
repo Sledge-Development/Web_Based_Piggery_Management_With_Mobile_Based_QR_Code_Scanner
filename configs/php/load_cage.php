@@ -10,6 +10,8 @@ if ($result->num_rows <= 0) {
     echo json_encode(["code" => 404, "message" => "No breed data yet. Please add new breeds first."]);
 } else {
     while ($row = $result->fetch_assoc()) {
-        echo '<option class="cage-data" value="' . $row["cage_id"] . '">' . $row["cage_name"] . '</option>';
+        if (getTotalCage($connect, $row["cage_id"]) < $row["cage_max"]) {
+            echo '<option class="cage-data" value="' . $row["cage_id"] . '">' . $row["cage_name"] . ',Max:' . $row["cage_max"] . '</option>';
+        }
     }
 }

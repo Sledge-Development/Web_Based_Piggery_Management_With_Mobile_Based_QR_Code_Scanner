@@ -16,7 +16,7 @@ function returner($code, $message)
 {
     return json_encode(["code" => $code, "message" => $message]);
 }
-function getTotal($connect, $id)
+function getTotalCage($connect, $id)
 {
     $sql = "select count(cage_id) as total_pig from tbl_pigs where is_exist='true' and cage_id=?";
     $stmt = $connect->prepare($sql);
@@ -26,7 +26,16 @@ function getTotal($connect, $id)
     $row = $result->fetch_assoc();
     return $row["total_pig"];
 }
-
+function getTotalBatch($connect, $id)
+{
+    $sql = "select count(batch_id) as total_pig from tbl_pigs where is_exist='true' and batch_id=?";
+    $stmt = $connect->prepare($sql);
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $row = $result->fetch_assoc();
+    return $row["total_pig"];
+}
 function generatePigUid()
 {
     $list = "abcdefghijkmnopqstuvwxyz1234567890";
@@ -110,130 +119,10 @@ function checkPassword($connect, $password, $user_id)
     }
 }
 
-function getTotalCars($connection)
-{
-    $sql = "select * from car_information where IS_EXIST='true'";
-    $stmt = $connection->prepare($sql);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    return   $result->num_rows;
-}
 
 
-function pagination_data_tracker($page_num)
-{
-    $number_of_data = 2;
-    $start_data = 0;
-    $end_data = $number_of_data;
 
-    $limit_end = $page_num * $end_data;
-    $limit_start = $limit_end - $number_of_data;
-    $data = array("limit_start" => $limit_start, "limit_end" => $limit_end);
-    return json_encode($data);
-}
-function generateWalletId()
-{
-    $walletid = "";
-    for ($i = 0; $i < 25; $i++) {
-        $walletid = $walletid . rand(0, 9);
-    }
-    return $walletid;
-}
-function checkChannel_Id($channel_id)
-{
-    $curl = curl_init();
 
-    curl_setopt_array($curl, [
-        CURLOPT_URL => "https://www.googleapis.com/youtube/v3/channels?id=" . $channel_id . "&part=snippet&key=AIzaSyAlvMUXWtwcYW10MVHlo_lVTrhL6_a_87o",
-        CURLOPT_RETURNTRANSFER => true,
-        CURLOPT_ENCODING => "",
-        CURLOPT_MAXREDIRS => 10,
-        CURLOPT_TIMEOUT => 30,
-        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-        CURLOPT_CUSTOMREQUEST => "GET",
-        CURLOPT_HTTPHEADER => [
-            "Accept: */*",
-            "User-Agent: Thunder Client (https://www.thunderclient.com)"
-        ],
-    ]);
-
-    $response = curl_exec($curl);
-    $err = curl_error($curl);
-
-    curl_close($curl);
-
-    if ($err) {
-        return 500;
-    } else {
-        if (str_contains($response, "items")) {
-            return 200;
-        } else {
-            return 400;
-        }
-    }
-}
-function verify_ownership($channel_id, $author_channel)
-{
-    $curl = curl_init();
-
-    curl_setopt_array($curl, [
-        CURLOPT_URL => "https://www.googleapis.com/youtube/v3/channels?id=" . $channel_id . "&part=snippet&key=AIzaSyAlvMUXWtwcYW10MVHlo_lVTrhL6_a_87o",
-        CURLOPT_RETURNTRANSFER => true,
-        CURLOPT_ENCODING => "",
-        CURLOPT_MAXREDIRS => 10,
-        CURLOPT_TIMEOUT => 30,
-        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-        CURLOPT_CUSTOMREQUEST => "GET",
-        CURLOPT_HTTPHEADER => [
-            "Accept: */*",
-            "User-Agent: Thunder Client (https://www.thunderclient.com)"
-        ],
-    ]);
-
-    $response = curl_exec($curl);
-    $err = curl_error($curl);
-
-    curl_close($curl);
-
-    if ($err) {
-        return 500;
-    } else {
-        if (str_contains($response,  $author_channel)) {
-            return 200;
-        } else {
-            return 401;
-        }
-    }
-}
-function get_youtube_details($video_id)
-{
-    $curl = curl_init();
-
-    curl_setopt_array($curl, [
-        CURLOPT_URL => "https://www.googleapis.com/youtube/v3/videos?id=" . $video_id . "&part=snippet&key=AIzaSyAlvMUXWtwcYW10MVHlo_lVTrhL6_a_87o",
-        CURLOPT_RETURNTRANSFER => true,
-        CURLOPT_ENCODING => "",
-        CURLOPT_MAXREDIRS => 10,
-        CURLOPT_TIMEOUT => 30,
-        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-        CURLOPT_CUSTOMREQUEST => "GET",
-        CURLOPT_HTTPHEADER => [
-            "Accept: */*",
-            "User-Agent: Thunder Client (https://www.thunderclient.com)"
-        ],
-    ]);
-
-    $response = curl_exec($curl);
-    $err = curl_error($curl);
-
-    curl_close($curl);
-
-    if ($err) {
-        return 500;
-    } else {
-        return $response;
-    }
-}
 
 function MenuRender($full_name)
 {
